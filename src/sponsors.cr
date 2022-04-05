@@ -17,7 +17,7 @@ module Sponsors
       v.each do |dom|
         dom.json.records.each do |x, y|
           y.each do |z|
-            tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, target: z.target, comments: z.description)
+            tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, target: z.target, comments: z.description, priority: z.priority)
           end
         end
       end

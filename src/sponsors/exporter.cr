@@ -37,9 +37,12 @@ module Sponsors
 
     # If they accept IPs, try to detect them and return the type
     private def target_type(type : Sponsors::Record::Type, value : String) : String
-      return "content" unless [Sponsors::Record::Type::A, Sponsors::Record::Type::AAAA].includes?(type)
-      return Target::IPV4.to_s.downcase if /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/ === value
-      return Target::IPV6.to_s.downcase if /^[a-fA-F0-9:]+$/ === value
+      return Target::TARGET.to_s.downcase if type == Sponsors::Record::Type::CNAME
+      return Target::IPV4.to_s.downcase if /^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/ === value && type == Sponsors::Record::Type::A
+      return Target::IPV6.to_s.downcase if /^[a-fA-F0-9:]+$/ === value && type == Sponsors::Record::Type::AAAA
+      return "content" if type == Sponsors::Record::Type::TXT
+      return "mailServer" if type == Sponsors::Record::Type::MX
+
       puts "[ERROR]: Target matching failed - #{type.to_s} # #{value}"
       exit(1)
     end
@@ -56,16 +59,17 @@ module Sponsors
           target     => dns_record.target,
           "ttl"      => dns_record.ttl,
           "comments" => dns_record.comments,
+          "priority" => dns_record.priority,
         }
       end
 
       case format
       when Format::JSON
-        formatted_record["records"].map { |x| x.reject!("comments") }
+        formatted_record["records"].map { |x| x.reject!("comments", x["priority"] ? nil : "priority") }
         return formatted_record.to_pretty_json
       when Format::HJSON
         clean_json = formatted_record.dup
-        clean_json["records"] = clean_json["records"].map { |x| x.reject("comments") }
+        clean_json["records"] = clean_json["records"].map { |x| x.reject("comments", x["priority"] ? nil : "priority") }
         json = clean_json.to_pretty_json
         formatted_record["records"].each do |dns_record|
           json = json.gsub(/("type": "#{dns_record["type"]}",\n)(      "name": "#{dns_record["name"]}",\n)/, "\\1      # Comment: #{dns_record["comments"]}\n\\2")

@@ -11,6 +11,8 @@ module Sponsors
       property target : String
       # Some comments on the record (if any)
       property description : String?
+      # Priority on MX or other
+      property priority : Int32?
     end
 
     # A Domain structure
@@ -30,6 +32,9 @@ module Sponsors
       @json = begin
         Domain.from_json(body)
       rescue
+        {% if @top_level.has_constant? "Spec" %}
+          raise "Sponsors::Parse - One or more JSONs are not parsable, aborted."
+        {% end %}
         Sponsors::Logger.fatal("One or more JSONs are not parsable, aborted.")
       end
     end

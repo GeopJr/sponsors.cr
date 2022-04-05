@@ -48,7 +48,7 @@ describe Sponsors::Export do
       found.each do |x, y|
         if x == "ttl"
           y.as_i.should eq(14400)
-        elsif ["ipv4", "ipv6", "content"].includes?(x)
+        elsif ["ipv4", "ipv6", "content", "target", "mailServer"].includes?(x)
           y.to_s.should eq(random_find_value.target)
         elsif x == "type"
           y.to_s.should eq(random_find_key)

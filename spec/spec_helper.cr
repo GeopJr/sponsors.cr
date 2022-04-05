@@ -26,7 +26,22 @@ module Sponsors
             },
             {
               "name": "wwww",
+              "target": "192.168.1.1",
+              "description": "Rewrite rule"
+            }
+          ],
+          "AAAA": [
+            {
+              "name": "wwww",
               "target": "29df:8f82:2533:d51e:724a:ade1:f0d3:48cb",
+              "description": "Rewrite rule"
+            }
+          ],
+          "MX": [
+            {
+              "name": "wwww",
+              "target": "test.test.test",
+              "priority": 10,
               "description": "Rewrite rule"
             }
           ]

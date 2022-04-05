@@ -7,6 +7,7 @@ module Sponsors
       AAAA
       CNAME
       TXT
+      MX
     end
 
     # [MACRO] Generate the class and its return types
@@ -45,6 +46,7 @@ module Sponsors
       target:   {type: "String", doc: "The target/ip it points to"},
       ttl:      {type: "Int32 = 14400", doc: "TTL (default: 14400)"},
       comments: {type: "String? = nil", doc: "Comments on the record"},
+      priority: {type: "Int32? = nil", doc: "MX or other priority"},
     })
   end
 end

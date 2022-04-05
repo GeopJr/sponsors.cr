@@ -5,6 +5,6 @@ describe Sponsors::Parse do
     file = Dir.children(Sponsors::GEOPJR_DEV)[0]
     body = File.read(Sponsors::GEOPJR_DEV.join(file))
     parser = Sponsors::Parse.new(body)
-    parser.json.to_json.should eq(JSON.parse(body).to_json)
+    JSON.parse(parser.json.to_json).should eq(JSON.parse(body))
   end
 end
