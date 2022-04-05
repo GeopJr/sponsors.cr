@@ -1,0 +1,13 @@
+name: sponsors
+version: 1.0.0
+
+authors:
+  - Evangelos Paterakis <evan@geopjr.dev>
+
+targets:
+  sponsors:
+    main: src/sponsors.cr
+
+crystal: 1.3.2
+
+license: BSD-2-Clauses
