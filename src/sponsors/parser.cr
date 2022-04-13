@@ -13,6 +13,8 @@ module Sponsors
       property description : String?
       # Priority on MX or other
       property priority : Int32?
+      # TTL
+      property ttl : Int32 = 1
     end
 
     # A Domain structure

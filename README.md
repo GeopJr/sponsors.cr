@@ -72,12 +72,14 @@ For example:
       {
         "name": "queer.software",
         "content": "192.0.2.1",
-        "description": "Rewrite rule"
+        "description": "Rewrite rule",
+        "ttl": 14400
       },
       {
         "name": "wwww",
         "content": "192.0.2.1",
-        "description": "Rewrite rule"
+        "description": "Rewrite rule",
+        "ttl": 14400
       }
     ]
   }
@@ -141,6 +143,7 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
       "type": "String",
       "name": "String",
       "content": "String",
+      "ttl": "Int32? = 1"
     }
   ]
 }
@@ -153,7 +156,7 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
       "type": "CNAME",
       "name": "geopjr",
       "content": "geopjr.dev",
-      "ttl": 14400
+      "ttl": 1
     },
     {
       "type": "A",
@@ -181,7 +184,7 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
       # Comment: Personal website
       "name": "geopjr",
       "content": "geopjr.dev",
-      "ttl": 14400
+      "ttl": 1
     },
     {
       "type": "A",

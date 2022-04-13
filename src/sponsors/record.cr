@@ -44,6 +44,7 @@ module Sponsors
       type:     {type: "Type", doc: "The DNS record type"},
       name:     {type: "String", doc: "The subdomain"},
       content:  {type: "String", doc: "The content/target/ip it points to"},
+      ttl:      {type: "Int32 = 1", doc: "TTL (default: 1 = AUTO)"},
       comments: {type: "String? = nil", doc: "Comments on the record"},
       priority: {type: "Int32? = nil", doc: "MX or other priority"},
     })

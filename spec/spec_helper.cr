@@ -15,22 +15,30 @@ module Sponsors
             {
               "name": "#{{{random}}.sample}",
               "content": "#{{{random}}.sample}#{{{random}}.sample}.dev",
+              "description": "Personal website",
+              "ttl": 1
             }
           ],
           "A": [
             {
               "name": "queer.software",
               "content": "#{Random.new.rand(101)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}",
+              "description": "Rewrite rule",
+              "ttl": 1
             },
             {
               "name": "wwww",
               "content": "192.168.1.1",
+              "description": "Rewrite rule",
+              "ttl": 14400
             }
           ],
           "AAAA": [
             {
               "name": "wwww",
               "content": "29df:8f82:2533:d51e:724a:ade1:f0d3:48cb",
+              "description": "Rewrite rule",
+              "ttl": 1
             }
           ],
           "MX": [
@@ -38,7 +46,8 @@ module Sponsors
               "name": "wwww",
               "content": "test.test.test",
               "priority": 10,
-              "description": "Rewrite rule"
+              "description": "Rewrite rule",
+              "ttl": 1
             }
           ]
         }
