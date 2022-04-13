@@ -7,8 +7,8 @@ module Sponsors
 
       # The subdomain
       property name : String
-      # The target/ip it points to
-      property target : String
+      # The content/target/ip it points to
+      property content : String
       # Some comments on the record (if any)
       property description : String?
       # Priority on MX or other

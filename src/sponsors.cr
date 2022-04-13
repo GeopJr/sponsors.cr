@@ -17,13 +17,12 @@ module Sponsors
       v.each do |dom|
         dom.json.records.each do |x, y|
           y.each do |z|
-            tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, target: z.target, comments: z.description, priority: z.priority)
+            tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, content: z.content, comments: z.description, priority: z.priority, ttl: z.ttl)
           end
         end
       end
       exports[k] = Sponsors::Export.new(tmp)
     end
-    # puts exports
     if Args["output"]
       extension = [Sponsors::Export::Format::TABLE, Sponsors::Export::Format::PLAIN].includes?(Args["type"]) ? "md" : Args["type"].to_s.downcase
       exports.keys.each do |k|

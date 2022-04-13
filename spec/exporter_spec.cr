@@ -8,7 +8,7 @@ describe Sponsors::Export do
       random_find_records = find.values.sample.sample.json.records
       random_find_key = random_find_records.keys.sample
       random_find_value = random_find_records[random_find_key].sample
-      formatted_record = "#{random_find_key} ~ #{random_find_value.name} ~ #{random_find_value.target} ~ 14400 ~ #{random_find_value.description}"
+      formatted_record = "#{random_find_key} ~ #{random_find_value.name} ~ #{random_find_value.content} ~ 1 ~ #{random_find_value.description}"
       v.export.split("\n").should contain(formatted_record)
     end
   end
@@ -20,7 +20,7 @@ describe Sponsors::Export do
       random_find_records = find.values.sample.sample.json.records
       random_find_key = random_find_records.keys.sample
       random_find_value = random_find_records[random_find_key].sample
-      formatted_record = [random_find_key, random_find_value.name, random_find_value.target, "14400", random_find_value.description]
+      formatted_record = [random_find_key, random_find_value.name, random_find_value.content, "1", random_find_value.description]
       formatted_record.each do |r|
         v.export(:TABLE).split("|").map { |x| x.strip }.reject! { |x| x.empty? }.compact!.should contain(r)
       end
@@ -34,7 +34,7 @@ describe Sponsors::Export do
       random_find_records = find.values.sample.sample.json.records
       random_find_key = random_find_records.keys.sample
       random_find_value = random_find_records[random_find_key].sample
-      values = ["14400", random_find_value.target, random_find_key, random_find_value.name]
+      values = ["1", random_find_value.content, random_find_key, random_find_value.name]
       found = Hash(String, JSON::Any).new
       JSON.parse(v.export(:JSON)).as_h["records"].as_a.each do |z|
         y = z.as_h.values.map { |x| x.to_s }
@@ -47,9 +47,9 @@ describe Sponsors::Export do
       found.keys.size.should be > 0
       found.each do |x, y|
         if x == "ttl"
-          y.as_i.should eq(14400)
-        elsif ["ipv4", "ipv6", "content", "target", "mailServer"].includes?(x)
-          y.to_s.should eq(random_find_value.target)
+          y.as_i.should eq(1)
+        elsif x == "content"
+          y.to_s.should eq(random_find_value.content)
         elsif x == "type"
           y.to_s.should eq(random_find_key)
         else

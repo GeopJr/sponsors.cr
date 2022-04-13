@@ -43,8 +43,7 @@ module Sponsors
     create_class({
       type:     {type: "Type", doc: "The DNS record type"},
       name:     {type: "String", doc: "The subdomain"},
-      target:   {type: "String", doc: "The target/ip it points to"},
-      ttl:      {type: "Int32 = 14400", doc: "TTL (default: 14400)"},
+      content:  {type: "String", doc: "The content/target/ip it points to"},
       comments: {type: "String? = nil", doc: "Comments on the record"},
       priority: {type: "Int32? = nil", doc: "MX or other priority"},
     })

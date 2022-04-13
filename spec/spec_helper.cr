@@ -14,33 +14,29 @@ module Sponsors
           "CNAME": [
             {
               "name": "#{{{random}}.sample}",
-              "target": "#{{{random}}.sample}#{{{random}}.sample}.dev",
-              "description": "Personal website"
+              "content": "#{{{random}}.sample}#{{{random}}.sample}.dev",
             }
           ],
           "A": [
             {
               "name": "queer.software",
-              "target": "#{Random.new.rand(101)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}",
-              "description": "Rewrite rule"
+              "content": "#{Random.new.rand(101)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}.#{Random.new.rand(10)}",
             },
             {
               "name": "wwww",
-              "target": "192.168.1.1",
-              "description": "Rewrite rule"
+              "content": "192.168.1.1",
             }
           ],
           "AAAA": [
             {
               "name": "wwww",
-              "target": "29df:8f82:2533:d51e:724a:ade1:f0d3:48cb",
-              "description": "Rewrite rule"
+              "content": "29df:8f82:2533:d51e:724a:ade1:f0d3:48cb",
             }
           ],
           "MX": [
             {
               "name": "wwww",
-              "target": "test.test.test",
+              "content": "test.test.test",
               "priority": 10,
               "description": "Rewrite rule"
             }
@@ -84,7 +80,7 @@ def create_export_entries : Hash(String, Sponsors::Export)
     v.each do |dom|
       dom.json.records.each do |x, y|
         y.each do |z|
-          tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, target: z.target, comments: z.description)
+          tmp << Sponsors::Record.new(type: Sponsors::Record::Type.parse(x), name: z.name, content: z.content, comments: z.description)
         end
       end
     end

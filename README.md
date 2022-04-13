@@ -44,7 +44,7 @@ Then in the json format is:
     "<A/AAAA/CNAME/TXT>": [
       {
         "name": "String",
-        "target": "String",
+        "content": "String",
         "ttl": "Int32?",
         "description": "String?"
       }
@@ -64,19 +64,19 @@ For example:
     "CNAME": [
       {
         "name": "geopjr",
-        "target": "geopjr.dev",
+        "content": "geopjr.dev",
         "description": "Personal website"
       }
     ],
     "A": [
       {
         "name": "queer.software",
-        "target": "192.0.2.1",
+        "content": "192.0.2.1",
         "description": "Rewrite rule"
       },
       {
         "name": "wwww",
-        "target": "192.0.2.1",
+        "content": "192.0.2.1",
         "description": "Rewrite rule"
       }
     ]
@@ -140,8 +140,7 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
     {
       "type": "String",
       "name": "String",
-      "<content/ipv4/ipv6>": "String",
-      "ttl": "Int32"
+      "content": "String",
     }
   ]
 }
@@ -159,13 +158,13 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
     {
       "type": "A",
       "name": "queer.software",
-      "ipv4": "192.0.2.1",
+      "content": "192.0.2.1",
       "ttl": 14400
     },
     {
       "type": "A",
       "name": "wwww",
-      "ipv4": "192.0.2.1",
+      "content": "192.0.2.1",
       "ttl": 14400
     }
   ]
@@ -188,14 +187,14 @@ A ~ wwww ~ 192.0.2.1 ~ 14400 ~ Rewrite rule
       "type": "A",
       # Comment: Rewrite rule
       "name": "queer.software",
-      "ipv4": "192.0.2.1",
+      "content": "192.0.2.1",
       "ttl": 14400
     },
     {
       "type": "A",
       # Comment: Rewrite rule
       "name": "wwww",
-      "ipv4": "192.0.2.1",
+      "content": "192.0.2.1",
       "ttl": 14400
     }
   ]
